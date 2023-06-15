@@ -1,0 +1,75 @@
+/* Testi styling */
+
+.rating-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.rating-btn button {
+    padding: 5px 20px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: black;
+    border: none;
+    margin: 30px 10px;
+}
+
+.testimonials-container {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.testimonials-container h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.testimonials-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.testi-card {
+    width: 360px;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.testi-card img {
+    width: 100%;
+    height: 280px;
+
+}
+
+
+.quotes {
+    color: #7e7e7e;
+    padding: 10px;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.author {
+    font-weight: bold;
+    text-align: right;
+    padding: 10px;
+    font-style: italic;
+}
+
+.testi-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+}

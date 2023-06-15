@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Personal Web</title>
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/public/images/logo.png" alt="imageLogo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link mx-3 active fw-semibold text-color" aria-current="page" href="/">Home</a>
+                    </li>
+                    {{if .DataSession.IsLogin}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Add Blog</a>
+                    </li>
+                    {{end}}
+                    <li class="nav-item active fw-semibold text-color">
+                        <a class="nav-link" href="/testimonial">Testimonials</a>
+                    </li>
+                </ul>
+
+                {{if .DataSession.IsLogin}}
+                <a href="#" class="nav-link  mx-3">Hello, {{.DataSession.Name}}</a>
+                <form id="myform" action="/logout" method="POST"></form>
+                <button onclick="document.getElementById('myform').submit()" class="btn btn-dark btn-submit px-4 mx-4">
+                    Logout
+                </button>
+                {{else}}
+                <a href="/form-register" class="nav-link">Register</a>
+                <a href="/form-login" class="nav-link  mx-3">Login</a>
+                {{end}}
+
+                <a href="/contact"><button class="btn btn-dark btn-submit px-4" type="submit">Contact
+                        Me</button></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Tutup Nav -->
+
+    {{if .FlashMessage}} {{if .FlashStatus}}
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+        <strong>{{.FlashMessage}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{else}}
+    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+        <strong>{{.FlashMessage}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{end}} {{end}}
+
+    <!-- Card -->
+    <div class="card m-5 border-white">
+        <div class="row g-0 align-items-center p-2 shadow mx-1 rounded-3">
+            <!-- card left -->
+            <div class="col-md-7 p-4 px">
+                <h1 class="mb-4 fw-bold">Welcome to my hut</h1>
+                <p class="mb-4" style="text-align: justify;">I am a Full-Stack website developer who is ready to help
+                    you create an
+                    application
+                    that
+                    suits your
+                    needs and is designed with good skills. I was previously a UI/UX designer so I am sure to make
+                    you
+                    or your company satisfied.
+                    <br>
+                    The language I almost mastered was Javascript with the help of the React Framework and
+                    Tailwindcss
+                    as a helper so that what I designed became perfect. And to complete it I used Go-lang as a
+                    back-end
+                    that I recently mastered
+                </p>
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        <button type="button" class="btn btn-dark rounded-5 px-4"><a href="/contact"
+                                class="text-decoration-none text-light">Contact</a></button>
+                    </div>
+                    <div class="col align-content-between">
+                        <a class="col align-items-stretch icon-link icon-link-hover text-decoration-none text-black"
+                            href="#">
+                            <p>Download CV</p>
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-2 mt-sm-5">
+                    <a class="btn btn-primary rounded-circle me-2" style="background-color: #000000;"
+                        href="https://facebook.com/ajizblast" role="button"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-primary rounded-circle me-2" style="background-color: #000000;"
+                        href="https://twitter.com/ajizblast" role="button"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-primary rounded-circle me-2" style="background-color: #000000;"
+                        href="https://github.com/ajizblast" role="button"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-primary rounded-circle me-2" style="background-color: #000000;"
+                        href="https://linkedin.com/in/chahyo/" role="button"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- card right -->
+            <div class="card m-3 mx-auto shadow" style="width: 16rem;">
+                <img src="/public/images/aji.jpg" class="card-img-top rounded-top-3" alt="...">
+                <div class="card-body d-flex flex-column align-content-center">
+                    <h5 class="card-title fw-bold">Chahyo Purnomo Aji</h5>
+                    <p class="card-text">Full Stack Developer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tutup Card -->
+
+    <!-- My Project -->
+
+
+    <div class="py-5">
+        <h1 class="fw-bold text-center pb-3">MY PROJECTS</h1>
+
+        <!-- Add Blog Button -->
+        {{if .DataSession.IsLogin}}
+        <div class="col align-self-end row mx-5 row text-end">
+            <a href="/blog"><button class="btn btn-dark btn-submit px-4" type="submit">Add Blog</button></a>
+        </div>
+        {{end}}
+
+        <div class="p-5">
+            <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-4">
+
+                {{range $index, $data := .Blogs}}
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="/uploads/{{$data.Image}}" class="card-img-top" alt="" style="height: 250px;">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/blog-detail/{{$data.ID}}" target="_blank"
+                                    style="text-decoration: none; color: #000000;">{{$data.Title}}</a></h5>
+                            <div class="mb-2 fw-light">{{$data.FormatStartDate}} - {{$data.FormatEndDate}} |
+                                {{$data.Author}} </div>
+                            <p class="card-text">{{$data.Content}}</p>
+                            <div class="d-flex flex-row mx-2 my-3 gap-2" style="height: 2em;">
+                                {{if $data.NodeJs}}
+                                <img src="/public/images/node-js.png" alt="Node Js" style="height: 100%;" />
+                                {{end}}
+                                {{if $data.ReactJs}}
+                                <img src="/public/images/react-js.png" alt="React Js" style="height: 100%;" />
+                                {{end}}
+                                {{if $data.NextJs}}
+                                <img src="/public/images/next-js.png" alt="Next Js" style="height: 100%;" />
+                                {{end}}
+                                {{if $data.TypeScript}}
+                                <img src="/public/images/typescript.png" alt="TypeScript" style="height: 100%;" />
+                                {{end}}
+                            </div>
+                            <div class="gap-3">
+                                <form class="d-inline" action="/edit-blog/{{$data.ID}}" method="GET">
+                                    <input type="submit" class="btn btn-dark" value="edit"></input>
+                                </form>
+
+                                <form class="d-inline" action="/delete-blog/{{$data.ID}}" method="POST">
+                                    <input type="submit" class="btn btn-dark" value="delete"></input>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </div>
+    <!-- tutup project -->
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+</html>

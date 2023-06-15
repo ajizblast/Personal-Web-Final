@@ -1,0 +1,65 @@
+// jika di js namanya adalah object
+// let objk1 {
+// 	myName: "aji",
+// 	myAge: 26,
+// 	isMarried: false,
+// }
+
+//jika di golang namanya struct
+//Personal adalah nama structnya
+//pendeklarasian filed yang akan kita pakai MyName,MyAge,etc. kemudian ditambah tipe datanya string, int, bool ,etc.
+
+type Personal struct {
+	MyName    string
+	MyAge     int
+	IsMarried bool
+	Handsome  bool
+}
+
+// penerapan struct membuat sebuah object
+// student1 adalah nama objectnya
+// Personal adalah nama struct diatas
+var student1 = Personal{
+	MyName:    "Aji",
+	MyAge:     26,
+	IsMarried: false,
+	Handsome:  true,
+}
+
+var student2 = Personal{
+	MyName:    "Chahyo",
+	MyAge:     22,
+	IsMarried: false,
+}
+
+
+//MyName adalah property/ kata kunci
+//"Aji" adalah value
+
+//bagaimana cara mendelkarasikan satu properti yang tidak ada di dalam struct? tidak bisa
+//misal Handsome: true, tapi didalam struct tidak ada pengisian datanya maka akan error. karena object tidak dikenali, karena tidak ada di dalam struct
+//misal MyAge ditulis integer apakah nilai di dalam object bisa ditulis string?
+//tidak bisa juga, dan akan error karena tipe data berbeda
+//jika di object property hansome tidak ditulis apa akan error?
+//tidak, karena di dalam type Personal struct{} hanya membuat pendeklarasian.
+
+
+//membuat sebuah array dengan slice
+var student3 = Personal[]string{"Diego", "Aji", "Mirna"}
+
+//membuat array of object
+//jika di golang [] simbol ini adalah slice
+// jika di golang [] simbol ini adalah slice of struct bukan array of object karena array of object ada di js
+// nah Personal setelah [] adalah structnya
+var student4 = []Personal{
+	{
+		MyName:    "Chahyo",
+		MyAge:     22,
+		IsMarried: false,
+	},
+	{
+		MyName:    "Purnomo",
+		MyAge:     20,
+		IsMarried: true,
+	},
+}
