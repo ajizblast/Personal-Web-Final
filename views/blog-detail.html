@@ -31,13 +31,30 @@
                     <li class="nav-item">
                         <a class="nav-link mx-3" aria-current="page" href="/">Home</a>
                     </li>
+                    {{if .DataSession.IsLogin}}
                     <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
+                        <a class="nav-link" href="/blog">Add Blog</a>
+                    </li>
+                    {{end}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/testimonial">Testimonials</a>
                     </li>
                 </ul>
 
-                <a href="/contact"><button class="btn btn-dark btn-submit px-4" type="submit">Contact
-                        Me</button></a>
+                <div class="d-flex justify-content-end">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/form-register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-3" aria-current="page" href="/form-login">Login</a>
+                        </li>
+                    </ul>
+                    <a href="/contact"><button class="btn btn-dark btn-submit px-4" type="submit">Contact
+                            Me</button></a>
+                </div>
+
+
             </div>
         </div>
     </nav>

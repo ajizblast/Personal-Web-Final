@@ -23,6 +23,11 @@
                     <li class="nav-item">
                         <a class="nav-link mx-3" aria-current="page" href="/">Home</a>
                     </li>
+                    {{if .DataSession.IsLogin}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Add Blog</a>
+                    </li>
+                    {{end}}
                     <li class="nav-item active fw-semibold text-color">
                         <a class="nav-link" href="/testimonial">Testimonials</a>
                     </li>
@@ -58,7 +63,7 @@
     {{end}} {{end}}
 
     <!-- ss -->
-    <div class="testi-container">
+    <div class="testi-container mt-md-5">
         <h1 class="fw-bold text-center py-3">MY Testimonials</h1>
         <h2 style="text-align: center; color: #fe4e30; margin-top: 10px;">Rating by Stars</h2>
         <div class="rating-btn">

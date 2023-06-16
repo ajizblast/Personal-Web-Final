@@ -36,7 +36,7 @@
                         <a class="nav-link" href="/blog">Add Blog</a>
                     </li>
                     {{end}}
-                    <li class="nav-item active fw-semibold text-color">
+                    <li class="nav-item">
                         <a class="nav-link" href="/testimonial">Testimonials</a>
                     </li>
                 </ul>
@@ -168,11 +168,11 @@
                                 <img src="/public/images/typescript.png" alt="TypeScript" style="height: 100%;" />
                                 {{end}}
                             </div>
-                            <div class="gap-3">
+
+                            <div class="g-3">
                                 <form class="d-inline" action="/edit-blog/{{$data.ID}}" method="GET">
                                     <input type="submit" class="btn btn-dark" value="edit"></input>
                                 </form>
-
                                 <form class="d-inline" action="/delete-blog/{{$data.ID}}" method="POST">
                                     <input type="submit" class="btn btn-dark" value="delete"></input>
                                 </form>

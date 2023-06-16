@@ -199,11 +199,26 @@ func blogDetail(c echo.Context) error {
 	blogDetail.FormatStartDate = blogDetail.StartDate.Format("2 January 2006")
 	blogDetail.FormatEndDate = blogDetail.EndDate.Format("2 January 2006")
 
-	data := map[string]interface{}{
-		"Blog":      blogDetail,
-		"StartDate": getDateString(blogDetail.StartDate.Format("2006-01-02")),
-		"EndDate":   getDateString(blogDetail.EndDate.Format("2006-01-02")),
+	sess, _ := session.Get("session", c)
+
+	if sess.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = sess.Values["isLogin"].(bool)
+		userData.Name = sess.Values["name"].(string)
 	}
+
+	data := map[string]interface{}{
+		"Blog":         blogDetail,
+		"StartDate":    getDateString(blogDetail.StartDate.Format("2006-01-02")),
+		"EndDate":      getDateString(blogDetail.EndDate.Format("2006-01-02")),
+		"FlashStatus":  sess.Values["status"],
+		"FlashMessage": sess.Values["message"],
+		"DataSession":  userData,
+	}
+	delete(sess.Values, "message")
+	delete(sess.Values, "status")
+	sess.Save(c.Request(), c.Response())
 
 	var tmpl, errTemplate = template.ParseFiles("views/blog-detail.html")
 
@@ -237,13 +252,32 @@ func editBlog(c echo.Context) error {
 }
 
 func testimonial(c echo.Context) error {
+	sess, _ := session.Get("session", c)
+
+	if sess.Values["isLogin"] != true {
+		userData.IsLogin = false
+	} else {
+		userData.IsLogin = sess.Values["isLogin"].(bool)
+		userData.Name = sess.Values["name"].(string)
+	}
+
+	datas := map[string]interface{}{
+		"FlashStatus":  sess.Values["status"],
+		"FlashMessage": sess.Values["message"],
+		"DataSession":  userData,
+	}
+
+	delete(sess.Values, "message")
+	delete(sess.Values, "status")
+	sess.Save(c.Request(), c.Response())
+
 	var tmpl, err = template.ParseFiles("views/testimonial.html")
 	if err != nil {
 		// fmt.Println("Tidak ada datanya")
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
 
-	return tmpl.Execute(c.Response(), nil)
+	return tmpl.Execute(c.Response(), datas)
 }
 
 func addBlog(c echo.Context) error {
